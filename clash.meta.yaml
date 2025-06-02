@@ -1,0 +1,22 @@
+proxies:
+  - name: 马来Tunnel
+    type: vless
+    server: my.yhlglobalshop.online
+    port: 443
+    uuid: 36f1f24a-3b39-4442-b98a-10e11e2dada0
+    tls: true
+    udp: true
+    network: ws
+    servername: my.yhlglobalshop.online
+    ws-opts:
+      path: /ws
+
+proxy-groups:
+  - name: 🚀 出口节点
+    type: select
+    proxies:
+      - 马来Tunnel
+
+rules:
+  - GEOIP,CN,DIRECT
+  - MATCH,🚀 出口节点
